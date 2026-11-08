@@ -1,4 +1,5 @@
 ◈ Cluster Matrix
+
 E-Commerce Customer Intelligence & Behavioural Segmentation
 Understand customers. Discover patterns. Find segments.
 
@@ -45,12 +46,15 @@ Dataset credit: Kundan Bedmutha. Please refer to the original Kaggle page for th
 The original CSV file is not included in this repository. It was used during data analysis and model development. The deployed dashboard uses the processed customer segmentation results, so downloading the original dataset is not required to explore the live application.
 How the Project Works
 The project follows a series of steps, starting with data exploration and ending with customer segmentation and dashboard development.
+
 1. Data Exploration
 I first inspected the dataset to understand its structure, columns, data types, missing values, duplicate records, and general customer activity.
+
 2. Customer-Level Aggregation
 The original dataset contains individual customer sessions. I grouped these records using customer_id to calculate overall activity for each customer.
 
 This produced a customer-level dataset with information such as total sessions, purchases, revenue, average pages viewed, average time on site, and cart activity.
+
 3. Feature Selection
 Five features were selected for the clustering process:
 - Total sessions
@@ -59,14 +63,17 @@ Five features were selected for the clustering process:
 - Average time on site
 - Total cart additions
 These features were selected to represent different aspects of customer activity and purchasing behaviour.
+
 4. Feature Scaling
 I used StandardScaler from Scikit-learn to standardise the selected features before clustering.
 
 This was important because the features have different ranges and units.
+
 5. Customer Clustering
 I applied the K-Means algorithm and used three clusters for the final segmentation.
 
 The model was trained with a random state of 42 and 10 initialisations.
+
 6. Model Evaluation
 Different cluster configurations were compared using:
 - Elbow Method
@@ -94,7 +101,10 @@ Cluster 2: Quick Browsers
 These customers spend less time on the website on average and generate comparatively lower revenue.
 
 The segment names are based on the average characteristics of each cluster. They are interpretations of the data, not fixed descriptions of every customer.
+
+
 Model Results
+
 The final dashboard uses the following K-Means configuration:
 Setting	Value
 Algorithm	K-Means
@@ -121,7 +131,10 @@ Strategic Insights	Key findings and business recommendations
 Project Team	Team members and project contributions
 
 The dashboard brings the analysis together in one place, making it easier to explore customer segments, compare their characteristics, and understand the results.
+
+
 Tech Stack
+
 - Python: Main programming language
 - Pandas: Data processing and analysis
 - Scikit-learn: Feature scaling and machine learning
@@ -129,7 +142,10 @@ Tech Stack
 - Plotly: Interactive charts
 - Matplotlib: Data visualisation
 - Joblib: Saving and loading trained models
+
+
 Project Structure
+
 Cluster-Matrix/
 ├── app.py
 ├── assets/
@@ -155,15 +171,19 @@ Cluster-Matrix/
 
 
 Limitations
+
 - The dataset contains simulated customer interactions.
 - Cluster names are interpretations based on average values, not confirmed customer categories.
 - Three clusters were selected with interpretability in mind, rather than being the best option across every evaluation metric.
 - The results may vary when the model is applied to a different dataset.
+
+
 Project Team
-Arisha Khanam
+
+Arisha Khanam -
 Data Analysis & Machine Learning
 
-Alveera Haidari
+Alveera Haidari -
 Dashboard Development & Business Intelligence
 
 Integral University
