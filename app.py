@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-from src.data_processing import load_customer_data
+
 
 
 
@@ -15,12 +15,13 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-# Load customer-level data
-customer_data = load_customer_data()
-# Load customer segmentation results
+# Load the final customer segmentation results
 segmented_data = pd.read_csv(
     "outputs/results/customer_segments_final.csv"
 )
+
+# Use the segmented customer data for dashboard calculations
+customer_data = segmented_data.copy()
 
 
 
