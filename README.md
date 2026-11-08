@@ -4,54 +4,60 @@
 
 **Understand customers. Discover patterns. Find segments.**
 
-Cluster Matrix is a machine learning and data analysis project focused on understanding e-commerce customer behaviour.
+Cluster Matrix is a machine learning and data analysis project focused on understanding customer behaviour in e-commerce.
 
-The idea behind this project is simple: every customer interacts with an online store differently. Some browse more, some spend more time exploring products, and some make purchases more often than others.
+Every customer interacts with an online store differently. Some visit more often, some spend more time exploring products, while others are more likely to make a purchase.
 
-Instead of looking at all customers as one group, Cluster Matrix uses **K-Means clustering** to identify different customer segments and understand how their behaviour varies.
+The aim of this project is to study these differences instead of treating all customers as one group. Using **K-Means clustering**, the project identifies customer segments based on their activity, engagement, and purchasing patterns.
 
-The project also includes an interactive Streamlit dashboard to explore the results and connect the analysis with useful business insights.
+It also includes an interactive **Streamlit dashboard** that makes the results easier to explore and helps connect the analysis with useful business insights.
 
----
+
 
 ## What This Project Does
 
 - Analyses customer activity and purchasing patterns.
-- Converts session-level data into customer-level information.
-- Uses machine learning to group customers with similar behaviour.
+- Converts session-level records into customer-level data.
+- Groups customers with similar behaviour using machine learning.
 - Compares customer segments based on revenue and activity.
-- Presents the results through an interactive dashboard.
-- Highlights findings that can help businesses understand their customers better.
+- Provides customer-level search and filtering through a dashboard.
+- Presents findings and recommendations based on the analysis.
 
 ## Dataset
 
-**Name:** Indian E-Commerce Customer Behavior & Purchase  
-**Created by:** Kundan Bedmutha  
-**Source:** [Kaggle Dataset](https://www.kaggle.com/datasets/kundanbedmutha/indian-e-commerce-customer-behavior-and-purchase)
+| Detail | Information |
+|
+| Dataset | Indian E-Commerce Customer Behavior & Purchase |
+| Creator | Kundan Bedmutha |
+| Source | [Kaggle Dataset](https://www.kaggle.com/datasets/kundanbedmutha/indian-e-commerce-customer-behavior-and-purchase) |
+| Records | 25,000 session records |
+| Columns | 29 |
 
-The dataset contains 25,000 simulated e-commerce session records with 29 columns.
+The dataset contains simulated e-commerce interaction records, including customer sessions, purchases, revenue, pages viewed, time spent on the website, cart activity, devices, and marketing channels.
 
-It includes information about customer sessions, purchases, revenue, pages viewed, time spent on the website, cart activity, devices, and marketing channels.
+For this project, the session records are grouped using customer IDs to create a customer-level summary.
 
-For this project, session records are grouped by customer so that we can study overall customer behaviour rather than looking at each session separately.
+**Dataset credit:** Kundan Bedmutha. Please refer to the original Kaggle page for the creator's usage terms.
 
-*Dataset credit: Kundan Bedmutha. Please refer to the original Kaggle page for the creator's usage terms.*
+The original CSV file is not included in this repository. It needs to be downloaded separately before running the project.
 
-## How It Works
+## How the Project Works
 
-The project follows a few main steps:
+The project follows a series of steps, starting with data exploration and ending with customer segmentation and dashboard development.
 
-**1. Data Exploration**
+### 1. Data Exploration
 
-First, I inspected the dataset to understand its structure, columns, data types, missing values, and customer activity.
+I first inspected the dataset to understand its structure, columns, data types, missing values, duplicate records, and general customer activity.
 
-**2. Customer-Level Data**
+### 2. Customer-Level Aggregation
 
-Since the original data contains individual sessions, I grouped the records using customer IDs. This helped create a summary of each customer's activity.
+The original dataset contains individual customer sessions. I grouped these records using `customer_id` to calculate overall activity for each customer.
 
-**3. Feature Selection**
+This produced a customer-level dataset with information such as total sessions, purchases, revenue, average pages viewed, average time on site, and cart activity.
 
-I selected five features for clustering:
+### 3. Feature Selection
+
+Five features were selected for the clustering process:
 
 - Total sessions
 - Total revenue
@@ -59,39 +65,59 @@ I selected five features for clustering:
 - Average time on site
 - Total cart additions
 
-**4. Feature Scaling**
+These features were selected to represent different aspects of customer activity and purchasing behaviour.
 
-I used `StandardScaler` to bring the selected features onto a comparable scale before applying the clustering algorithm.
+### 4. Feature Scaling
 
-**5. Customer Clustering**
+I used `StandardScaler` from Scikit-learn to standardise the selected features before clustering.
 
-I applied the K-Means algorithm and selected three clusters for the final dashboard.
+This was important because the features have different ranges and units.
 
-**6. Model Evaluation**
+### 5. Customer Clustering
 
-I compared different cluster configurations using the Elbow Method, Silhouette Score, and Davies-Bouldin Index. I also compared K-Means with Agglomerative Clustering.
+I applied the K-Means algorithm and used three clusters for the final segmentation.
+
+The model was trained with a random state of 42 and 10 initialisations.
+
+### 6. Model Evaluation
+
+Different cluster configurations were compared using:
+
+- Elbow Method
+- Silhouette Score
+- Davies-Bouldin Index
+
+I also compared K-Means with Agglomerative Clustering to get a better understanding of the segmentation results.
 
 ## Customer Segments
 
-The final model groups 8,442 customers into three segments.
+The final K-Means model divides **8,442 customers into three segments**.
 
-| Cluster | Segment | Customers |
+| Cluster | Customer Segment | Customers |
 |---|---|---:|
 | 0 | Engaged Browsers | 2,855 |
 | 1 | High-Value Customers | 2,644 |
 | 2 | Quick Browsers | 2,943 |
 
-Each segment represents a different pattern in the customer data:
+### Understanding the Segments
 
-- **Engaged Browsers:** Spend more time on the website on average, but generate comparatively lower revenue.
-- **High-Value Customers:** Have higher average revenue, more sessions, and more cart additions.
-- **Quick Browsers:** Spend less time on the website on average and generate comparatively lower revenue.
+**Cluster 0: Engaged Browsers**
 
-These names are based on the average behaviour of each cluster. They do not describe every individual customer.
+These customers spend more time on the website on average, but generate comparatively lower revenue.
+
+**Cluster 1: High-Value Customers**
+
+This group has higher average revenue, more sessions, and more cart additions compared with the other segments.
+
+**Cluster 2: Quick Browsers**
+
+These customers spend less time on the website on average and generate comparatively lower revenue.
+
+The segment names are based on the average characteristics of each cluster. They are interpretations of the data, not fixed descriptions of every customer.
 
 ## Model Results
 
-The final dashboard uses K-Means with three clusters.
+The final dashboard uses the following K-Means configuration:
 
 | Setting | Value |
 |---|---:|
@@ -101,38 +127,48 @@ The final dashboard uses K-Means with three clusters.
 | Davies-Bouldin Index | 1.5456 |
 | Random State | 42 |
 | Initialisations | 10 |
+| Customers clustered | 8,442 |
 
-I chose three clusters mainly because they provide a reasonably balanced and understandable segmentation. It was not the best configuration across every evaluation metric.
+Three clusters were selected mainly because they provide a reasonably balanced and understandable segmentation.
+
+Although other cluster configurations performed better on individual evaluation metrics, the final choice also considered how easily the segments could be interpreted.
 
 ## The Dashboard
 
-The dashboard is built using Streamlit and has six main sections:
+The project includes an interactive dashboard developed using Streamlit.
 
-| Section | What It Shows |
+It has six main sections:
+
+| Section | Purpose |
 |---|---|
 | Command Center | Customer snapshot and revenue performance |
-| Segment Intelligence | Customer segments and their behaviour |
-| Model Studio | Model settings and evaluation results |
+| Segment Intelligence | Customer segments and behavioural profiles |
+| Model Studio | Model configuration and evaluation results |
 | Customer Directory | Customer search, filters, and individual profiles |
 | Strategic Insights | Key findings and business recommendations |
-| Project Team | Project members and contributions |
+| Project Team | Team members and project contributions |
+
+The dashboard brings the analysis together in one place, making it easier to explore customer segments, compare their characteristics, and understand the results.
 
 ## Tech Stack
 
-- **Python** for the main programming work
-- **Pandas** for data processing and analysis
-- **Scikit-learn** for scaling and clustering
-- **Streamlit** for the dashboard
-- **Plotly** for interactive charts
-- **Matplotlib** for data visualisations
-- **Joblib** for saving and loading the trained model
+The project uses the following tools and libraries:
+
+- **Python:** Main programming language
+- **Pandas:** Data processing and analysis
+- **Scikit-learn:** Feature scaling and machine learning
+- **Streamlit:** Interactive dashboard development
+- **Plotly:** Interactive charts
+- **Matplotlib:** Data visualisation
+- **Joblib:** Saving and loading trained models
 
 ## Project Structure
 
-```text
+
 Cluster-Matrix/
 │
 ├── app.py
+│
 ├── data/
 │   └── Ecommerce.csv
 │
@@ -153,7 +189,9 @@ Cluster-Matrix/
 ├── outputs/
 │   ├── graphs/
 │   └── results/
-│       └── customer_segments_final.csv
+│       ├── customer_segments.csv
+│       ├── customer_segments_final.csv
+│       └── customer_summary.csv
 │
 ├── src/
 │   ├── data_processing.py
@@ -162,61 +200,89 @@ Cluster-Matrix/
 ├── .gitignore
 ├── README.md
 └── requirements.txt
-```
+
 
 ## Running the Project
 
-**1. Clone the repository**
+Follow these steps to run Cluster Matrix on your system.
 
-```bash
+### 1. Clone the Repository
+
+
 git clone https://github.com/arishakhn-coder/Cluster-Matrix.git
 cd Cluster-Matrix
-```
 
-**2. Install the required packages**
 
-```bash
+### 2. Download the Dataset
+
+The original dataset is not included in this repository.
+
+Download it from the following Kaggle page:
+
+[Indian E-Commerce Customer Behavior & Purchase](https://www.kaggle.com/datasets/kundanbedmutha/indian-e-commerce-customer-behavior-and-purchase)
+
+After downloading and extracting the file, place `Ecommerce.csv` inside the project's `data` folder.
+
+The expected file location is:
+
+
+Cluster-Matrix/
+└── data/
+    └── Ecommerce.csv
+
+
+Make sure the filename is exactly `Ecommerce.csv`.
+
+### 3. Install the Required Packages
+
+
 pip install -r requirements.txt
-```
 
-**3. Run the dashboard**
 
-```bash
+### 4. Run the Dashboard
+
+
 streamlit run app.py
-```
 
-Open the local URL shown in your terminal, usually:
 
-```text
+Open the local URL displayed in your terminal. It is usually:
+
+
 http://localhost:8501
-```
 
-**To train the model again:**
 
-```bash
+### Training the Model Again
+
+If you want to run the model training pipeline again, use:
+
+
 python src/train_model.py
-```
 
-The original dataset needs to be available at `data/Ecommerce.csv` for the training script and dashboard to work.
+
+The original dataset must be available at `data/Ecommerce.csv` for both the training pipeline and dashboard.
 
 ## Validation
 
-I also checked the final output to make sure the customer records and model assignments were consistent.
+After completing the model training and dashboard development, I performed validation checks to make sure the final customer data and saved model were consistent.
 
-- 8,442 unique customers in the original data.
-- 8,442 customer records in the final output.
+The validation results were:
+
+- 8,442 unique customers in the original dataset.
+- 8,442 customer records in the final dataset.
 - No duplicate customer IDs.
 - No missing values in the final customer dataset.
 - All 8,442 cluster assignments matched when reproduced using the saved model.
 
-This checks consistency on the same dataset. It does not measure performance on unseen customers.
+This confirms consistency when reproducing the assignments on the same dataset. It does not measure performance on unseen customers.
 
-## A Few Limitations
+## Limitations
+
+There are a few limitations to keep in mind:
 
 - The dataset contains simulated customer interactions.
-- Cluster names are interpretations of the results, not confirmed customer types.
-- The choice of three clusters prioritises interpretability over the best score on every metric.
-- The results may differ when applied to a different dataset.
+- Cluster names are interpretations based on average values, not confirmed customer categories.
+- Three clusters were selected with interpretability in mind, rather than being the best option across every evaluation metric.
+- The results may vary when the model is applied to a different dataset.
 
 ## Project Team
 
@@ -231,9 +297,10 @@ B.Tech, Computer Science and Engineering
 (Data Science & Artificial Intelligence)  
 Academic Year: 2026–2027
 
----
+
 
 *Built as an academic project to explore customer behaviour through data analysis, machine learning, and visualisation.*
 
-**◈ Cluster Matrix**  
+### ◈ Cluster Matrix
+
 *Understand customers. Discover patterns. Find segments.*
