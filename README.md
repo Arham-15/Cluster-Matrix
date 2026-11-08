@@ -146,6 +146,7 @@ Tech Stack
 
 Project Structure
 
+```text
 Cluster-Matrix/
 ├── app.py
 ├── assets/
@@ -168,6 +169,7 @@ Cluster-Matrix/
 ├── .gitignore
 ├── README.md
 └── requirements.txt
+
 
 
 Limitations
