@@ -189,8 +189,11 @@ Alveera Haidari -
 Dashboard Development & Business Intelligence
 
 Integral University
+
 B.Tech, Computer Science and Engineering
+
 (Data Science & Artificial Intelligence)
+
 Academic Year: 2026–2027
 
 Built as an academic project to explore customer behaviour through data analysis, machine learning, and visualisation.
