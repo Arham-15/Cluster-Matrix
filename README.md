@@ -1,202 +1,206 @@
-◈ Cluster Matrix
+# ◈ Cluster Matrix
+### E-Commerce Customer Intelligence & Behavioural Segmentation
 
-E-Commerce Customer Intelligence & Behavioural Segmentation
-Understand customers. Discover patterns. Find segments.
+**Understand customers. Discover patterns. Find segments.**
 
-Cluster Matrix is a machine learning and data analysis project focused on understanding customer behaviour in e-commerce.
+Cluster Matrix is a machine learning project that explores e-commerce customer behaviour through data analysis and clustering. It groups customers based on their shopping activity and engagement patterns, helping identify meaningful customer segments.
 
-Every customer interacts with an online store differently. Some visit more often, some spend more time exploring products, while others are more likely to make a purchase.
+**🚀 Live Dashboard:** [Launch Cluster Matrix](https://cluster-matrix.streamlit.app/)
 
-The aim of this project is to study these differences instead of treating all customers as one group. Using K-Means clustering, the project identifies customer segments based on their activity, engagement, and purchasing patterns.
+---
 
-It also includes an interactive Streamlit dashboard that makes the results easier to explore and helps connect the analysis with useful business insights.
-Live Application
-Cluster Matrix is deployed and ready to explore.
+## Dashboard Preview
 
-Launch Cluster Matrix → (https://cluster-matrix.streamlit.app/)
-
-Explore customer segments, purchasing behaviour, model evaluation, customer profiles, and business insights through the interactive dashboard.
-
-No local installation or setup is required to explore the live application.
-
-Dashboard Preview
 ![Cluster Matrix Dashboard](assets/dashboard_preview.png)
 
-What This Project Does
-- Analyses customer activity and purchasing patterns.
-- Converts session-level records into customer-level data.
-- Groups customers with similar behaviour using machine learning.
-- Compares customer segments based on revenue and activity.
-- Provides customer-level search and filtering through a dashboard.
-- Presents findings and recommendations based on the analysis.
-Dataset
-Detail	Information
-Dataset	Indian E-Commerce Customer Behavior & Purchase
-Creator	Kundan Bedmutha
-Source	Kaggle Dataset
-Records	25,000 session records
-Columns	29
+---
 
-The dataset contains simulated e-commerce interaction records, including customer sessions, purchases, revenue, pages viewed, time spent on the website, cart activity, devices, and marketing channels.
+## ✦ Project Overview
 
-For this project, the session records are grouped using customer IDs to create a customer-level summary.
+The project uses customer interaction data to understand how customers browse, engage with products, add items to their carts, and make purchases.
 
-Dataset credit: Kundan Bedmutha. Please refer to the original Kaggle page for the creator's usage terms.
+The workflow includes:
 
-The original CSV file is not included in this repository. It was used during data analysis and model development. The deployed dashboard uses the processed customer segmentation results, so downloading the original dataset is not required to explore the live application.
-How the Project Works
-The project follows a series of steps, starting with data exploration and ending with customer segmentation and dashboard development.
+- Data cleaning and exploratory data analysis
+- Customer-level feature aggregation
+- Feature scaling and K-Means clustering
+- Model evaluation and comparison
+- Interactive dashboard development
+- Business insights and recommendations
 
-1. Data Exploration
-I first inspected the dataset to understand its structure, columns, data types, missing values, duplicate records, and general customer activity.
+## 📊 Dataset
 
-2. Customer-Level Aggregation
-The original dataset contains individual customer sessions. I grouped these records using customer_id to calculate overall activity for each customer.
+**Dataset:** [Indian E-Commerce Customer Behavior & Purchase](https://www.kaggle.com/datasets/kundanbedmutha/indian-e-commerce-customer-behavior-and-purchase)  
+**Creator:** Kundan Bedmutha
 
-This produced a customer-level dataset with information such as total sessions, purchases, revenue, average pages viewed, average time on site, and cart activity.
+The dataset contains 25,000 simulated e-commerce session records and 29 columns. After grouping session records by customer, the project produces a customer-level dataset containing **8,442 unique customers**.
 
-3. Feature Selection
-Five features were selected for the clustering process:
+The original dataset is not included in this repository. To run the training pipeline, download it from Kaggle and place `Ecommerce.csv` inside the `data/` folder.
+
+## ⚙️ Methodology
+
+### Customer Aggregation
+
+Session-level records are grouped by customer to calculate features such as:
+
 - Total sessions
+- Total purchases
 - Total revenue
 - Average pages viewed
-- Average time on site
+- Average time spent on the website
 - Total cart additions
-These features were selected to represent different aspects of customer activity and purchasing behaviour.
+- Total cart abandonments
 
-4. Feature Scaling
-I used StandardScaler from Scikit-learn to standardise the selected features before clustering.
+### Customer Segmentation
 
-This was important because the features have different ranges and units.
+K-Means clustering is applied using five selected features:
 
-5. Customer Clustering
-I applied the K-Means algorithm and used three clusters for the final segmentation.
+1. Total sessions
+2. Total revenue
+3. Average pages viewed
+4. Average time on site
+5. Total cart additions
 
-The model was trained with a random state of 42 and 10 initialisations.
+The features are standardised using `StandardScaler` before clustering.
 
-6. Model Evaluation
-Different cluster configurations were compared using:
+The final dashboard uses **three customer segments**, containing all 8,442 customers.
+
+### Model Evaluation
+
+The model selection process considers:
+
 - Elbow Method
 - Silhouette Score
 - Davies-Bouldin Index
-I also compared K-Means with Agglomerative Clustering to get a better understanding of the segmentation results.
-Customer Segments
-The final K-Means model divides 8,442 customers into three segments.
-Cluster	Customer Segment	Customers
-0	Engaged Browsers	2,855
-1	High-Value Customers	2,644
-2	Quick Browsers	2,943
+- PCA-based cluster visualisation
+- Comparison with Agglomerative Clustering
 
-Understanding the Segments
-Cluster 0: Engaged Browsers
+Three clusters were selected as a practical and interpretable choice. They were not the best-performing option across every evaluation metric.
 
-These customers spend more time on the website on average, but generate comparatively lower revenue.
+## 🔍 Customer Segments
 
-Cluster 1: High-Value Customers
+The three clusters show different patterns in customer activity and purchase behaviour.
 
-This group has higher average revenue, more sessions, and more cart additions compared with the other segments.
+| Segment | Observed pattern |
+|---|---|
+| Cluster 0 | Lower revenue, fewer sessions, longer average time on site |
+| Cluster 1 | Higher revenue, more sessions, more cart additions |
+| Cluster 2 | Lower revenue, fewer sessions, shorter average time on site |
 
-Cluster 2: Quick Browsers
+These descriptions are based on cluster averages. They are interpretations of the data, not fixed labels for individual customers.
 
-These customers spend less time on the website on average and generate comparatively lower revenue.
+## 🖥️ Dashboard Sections
 
-The segment names are based on the average characteristics of each cluster. They are interpretations of the data, not fixed descriptions of every customer.
+The Streamlit dashboard contains six main sections:
 
+| Section | Purpose |
+|---|---|
+| Command Center | Customer and revenue snapshot |
+| Segment Intelligence | Cluster distribution and comparison |
+| Model Studio | Model configuration and evaluation |
+| Customer Directory | Customer-level search and filtering |
+| Strategic Insights | Findings and business recommendations |
+| Project Team | Project contributors |
 
-Model Results
+## 🛠️ Technology Stack
 
-The final dashboard uses the following K-Means configuration:
-Setting	Value
-Algorithm	K-Means
-Number of clusters	3
-Silhouette Score	0.2070
-Davies-Bouldin Index	1.5456
-Random State	42
-Initialisations	10
-Customers clustered	8,442
+- **Python** for data processing and machine learning
+- **Pandas** for data manipulation
+- **Scikit-learn** for scaling and clustering
+- **Matplotlib & Seaborn** for analysis visualisations
+- **Plotly** for interactive charts
+- **Streamlit** for the dashboard
+- **Git & GitHub** for version control
 
-Three clusters were selected mainly because they provide a reasonably balanced and understandable segmentation.
-
-Although other cluster configurations performed better on individual evaluation metrics, the final choice also considered how easily the segments could be interpreted.
-The Dashboard
-The project includes an interactive dashboard developed using Streamlit.
-
-It has six main sections:
-Section	Purpose
-Command Center	Customer snapshot and revenue performance
-Segment Intelligence	Customer segments and behavioural profiles
-Model Studio	Model configuration and evaluation results
-Customer Directory	Customer search, filters, and individual profiles
-Strategic Insights	Key findings and business recommendations
-Project Team	Team members and project contributions
-
-The dashboard brings the analysis together in one place, making it easier to explore customer segments, compare their characteristics, and understand the results.
-
-
-Tech Stack
-
-- Python: Main programming language
-- Pandas: Data processing and analysis
-- Scikit-learn: Feature scaling and machine learning
-- Streamlit: Interactive dashboard development
-- Plotly: Interactive charts
-- Matplotlib: Data visualisation
-- Joblib: Saving and loading trained models
-
-
-Project Structure
+## 📁 Project Structure
 
 ```text
 Cluster-Matrix/
+│
 ├── app.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+│
 ├── assets/
 │   └── dashboard_preview.png
+│
+├── data/
+│   └── Ecommerce.csv
+│
 ├── data_analysis/
-│   ├── agglomerative_comparison.py
 │   ├── customer_aggregation.py
 │   ├── exploratory_analysis.py
 │   ├── model_evaluation.py
-│   └── model_validation.py
+│   ├── model_validation.py
+│   └── agglomerative_comparison.py
+│
 ├── models/
 │   ├── kmeans_model.pkl
 │   └── scaler.pkl
+│
 ├── outputs/
 │   ├── graphs/
 │   └── results/
-├── src/
-│   ├── data_processing.py
-│   └── train_model.py
-├── .gitignore
-├── README.md
-└── requirements.txt
+│
+└── src/
+    ├── data_processing.py
+    └── train_model.py
 ```
 
+*Note: The raw dataset is kept locally and excluded from GitHub. The `data/` folder may need to be created after downloading the dataset.*
 
-Limitations
+## ▶️ Run Locally
+
+**1. Clone the repository**
+
+```bash
+git clone https://github.com/arishakhn-coder/Cluster-Matrix.git
+cd Cluster-Matrix
+```
+
+**2. Install the dependencies**
+
+
+pip install -r requirements.txt
+
+
+**3. Add the dataset**
+
+Place `Ecommerce.csv` inside the `data/` folder.
+
+**4. Run the dashboard**
+
+
+streamlit run app.py
+
+
+## 📌 Limitations
 
 - The dataset contains simulated customer interactions.
-- Cluster names are interpretations based on average values, not confirmed customer categories.
-- Three clusters were selected with interpretability in mind, rather than being the best option across every evaluation metric.
-- The results may vary when the model is applied to a different dataset.
+- Cluster descriptions are interpretations based on average feature values.
+- Three clusters were selected with interpretability in mind, rather than being optimal across every evaluation metric.
+- Results may differ when applied to real-world or different customer datasets.
 
+## 👥 Project Team
 
-Project Team
-
-Arisha Khanam -
+**Arisha Khanam**  
 Data Analysis & Machine Learning
 
-Alveera Haidari -
+**Alveera Haidari**  
 Dashboard Development & Business Intelligence
 
-Integral University
-
-B.Tech, Computer Science and Engineering
-
-(Data Science & Artificial Intelligence)
-
+**Integral University**  
+B.Tech, Computer Science and Engineering  
+(Data Science & Artificial Intelligence)  
 Academic Year: 2026–2027
 
-Built as an academic project to explore customer behaviour through data analysis, machine learning, and visualisation.
+---
 
-◈ Cluster Matrix
-Understand customers. Discover patterns. Find segments.
+<div align="center">
+
+### ◈ Cluster Matrix
+
+*Understand customers. Discover patterns. Find segments.*
+
+</div>
