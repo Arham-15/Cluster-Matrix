@@ -22,6 +22,10 @@ Explore customer segments, purchasing behaviour, model evaluation, customer prof
 
 No local installation or setup is required
 
+## Dashboard Preview
+
+![Cluster Matrix Dashboard](assets/dashboard_preview.png)
+
 
 
 ## What This Project Does

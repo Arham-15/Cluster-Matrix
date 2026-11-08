@@ -44,3 +44,4 @@ data/Ecommerce.csv
 # Python cache
 __pycache__/
 *.py[cod]
+cleanup_backup/
