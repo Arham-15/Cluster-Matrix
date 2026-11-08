@@ -1,0 +1,46 @@
+﻿# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code workspace settings
+.vscode/
+
+# Temporary files
+*.log
+*.tmp
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+
+# Local backup applications
+app_backup.py
+app_command_center_backup.py
+# Original dataset (download separately from Kaggle)
+data/Ecommerce.csv
+
+# Redundant root-level exports
+/customer_segments.csv
+/customer_summary.csv
+
+# Python cache
+__pycache__/
+*.py[cod]
