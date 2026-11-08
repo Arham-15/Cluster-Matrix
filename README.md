@@ -12,6 +12,16 @@ The aim of this project is to study these differences instead of treating all cu
 
 It also includes an interactive **Streamlit dashboard** that makes the results easier to explore and helps connect the analysis with useful business insights.
 
+## Live Application
+
+**Cluster Matrix is deployed and ready to explore.**
+
+[**Launch Cluster Matrix →**](https://cluster-matrix.streamlit.app/)
+
+Explore customer segments, purchasing behaviour, model evaluation, customer profiles, and business insights through the interactive dashboard.
+
+No local installation or setup is required
+
 
 
 ## What This Project Does
@@ -29,7 +39,7 @@ It also includes an interactive **Streamlit dashboard** that makes the results e
 |
 | Dataset | Indian E-Commerce Customer Behavior & Purchase |
 | Creator | Kundan Bedmutha |
-| Source | [Kaggle Dataset](https://www.kaggle.com/datasets/kundanbedmutha/indian-e-commerce-customer-behavior-and-purchase) |
+| Source |[Kaggle Dataset](https://www.kaggle.com/datasets/kundanbedmutha/indian-e-commerce-customer-behavior-and-purchase) ||
 | Records | 25,000 session records |
 | Columns | 29 |
 
@@ -39,7 +49,7 @@ For this project, the session records are grouped using customer IDs to create a
 
 **Dataset credit:** Kundan Bedmutha. Please refer to the original Kaggle page for the creator's usage terms.
 
-The original CSV file is not included in this repository. It needs to be downloaded separately before running the project.
+The original CSV file is not included in this repository. It was used during data analysis and model development. The deployed dashboard uses the processed customer segmentation results, so downloading the original dataset is not required to explore the live application.
 
 ## How the Project Works
 
@@ -169,8 +179,6 @@ Cluster-Matrix/
 │
 ├── app.py
 │
-├── data/
-│   └── Ecommerce.csv
 │
 ├── data_analysis/
 │   ├── inspect_data.py
@@ -201,65 +209,6 @@ Cluster-Matrix/
 ├── README.md
 └── requirements.txt
 
-
-## Running the Project
-
-Follow these steps to run Cluster Matrix on your system.
-
-### 1. Clone the Repository
-
-
-git clone https://github.com/arishakhn-coder/Cluster-Matrix.git
-cd Cluster-Matrix
-
-
-### 2. Download the Dataset
-
-The original dataset is not included in this repository.
-
-Download it from the following Kaggle page:
-
-[Indian E-Commerce Customer Behavior & Purchase](https://www.kaggle.com/datasets/kundanbedmutha/indian-e-commerce-customer-behavior-and-purchase)
-
-After downloading and extracting the file, place `Ecommerce.csv` inside the project's `data` folder.
-
-The expected file location is:
-
-
-Cluster-Matrix/
-└── data/
-    └── Ecommerce.csv
-
-
-Make sure the filename is exactly `Ecommerce.csv`.
-
-### 3. Install the Required Packages
-
-
-pip install -r requirements.txt
-
-
-### 4. Run the Dashboard
-
-
-streamlit run app.py
-
-
-Open the local URL displayed in your terminal. It is usually:
-
-
-http://localhost:8501
-
-
-### Training the Model Again
-
-If you want to run the model training pipeline again, use:
-
-
-python src/train_model.py
-
-
-The original dataset must be available at `data/Ecommerce.csv` for both the training pipeline and dashboard.
 
 ## Validation
 
