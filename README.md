@@ -12,7 +12,7 @@ It also includes an interactive Streamlit dashboard that makes the results easie
 Live Application
 Cluster Matrix is deployed and ready to explore.
 
-Launch Cluster Matrix →
+Launch Cluster Matrix → (https://cluster-matrix.streamlit.app/)
 
 Explore customer segments, purchasing behaviour, model evaluation, customer profiles, and business insights through the interactive dashboard.
 
