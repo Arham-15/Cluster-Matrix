@@ -126,7 +126,7 @@ Cluster-Matrix/
 │   └── dashboard_preview.png
 │
 ├── data/
-│   └── Ecommerce.csv
+│   └── (Place Ecommerce.csv here after downloading)
 │
 ├── data_analysis/
 │   ├── customer_aggregation.py
