@@ -126,7 +126,7 @@ Cluster-Matrix/
 │   └── dashboard_preview.png
 │
 ├── data/
-│   └── (Place Ecommerce.csv here after downloading)
+│   └── git.keep(The original dataset is not included in this repository. Download Ecommerce.csv separately and place it inside the data/ folder before running the training pipeline.)
 │
 ├── data_analysis/
 │   ├── customer_aggregation.py
