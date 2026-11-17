@@ -126,7 +126,7 @@ Cluster-Matrix/
 │   └── dashboard_preview.png
 │
 ├── data/
-│   └── .gitkeep(Place the downloaded Ecommerce.csv file her)
+│   └── .gitkeep(Place the downloaded `Ecommerce.csv` file her)
 │
 ├── data_analysis/
 │   ├── customer_aggregation.py
