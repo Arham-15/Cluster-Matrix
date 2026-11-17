@@ -126,7 +126,7 @@ Cluster-Matrix/
 │   └── dashboard_preview.png
 │
 ├── data/
-│   └── git.keep(The original dataset is not included in this repository. Download Ecommerce.csv separately and place it inside the data/ folder before running the training pipeline.)
+│   └── .gitkeep(Place the downloaded Ecommerce.csv file her)
 │
 ├── data_analysis/
 │   ├── customer_aggregation.py
@@ -147,8 +147,6 @@ Cluster-Matrix/
     ├── data_processing.py
     └── train_model.py
 ```
-
-*Note: The raw dataset is kept locally and excluded from GitHub. The `data/` folder may need to be created after downloading the dataset.*
 
 ## ▶️ Run Locally
 
